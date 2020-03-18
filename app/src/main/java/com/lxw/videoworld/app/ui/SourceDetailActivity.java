@@ -1,7 +1,7 @@
 package com.lxw.videoworld.app.ui;
 
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.text.TextUtils;
 
 import com.lxw.videoworld.R;

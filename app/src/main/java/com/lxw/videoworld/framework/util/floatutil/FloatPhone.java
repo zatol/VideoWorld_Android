@@ -3,7 +3,7 @@ package com.lxw.videoworld.framework.util.floatutil;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 import android.view.View;
 import android.view.WindowManager;
 

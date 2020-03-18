@@ -8,15 +8,15 @@ repositories {
 }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 29
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.lxw.videoworld"
         minSdkVersion 21
-        targetSdkVersion 22
+        targetSdkVersion 26
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 //        ndk {
 //            //选择要添加的对应cpu类型的.so库。
 //            abiFilters 'armeabi-v7a'
@@ -30,10 +30,16 @@ android {
         multiDexEnabled = true
         vectorDrawables.useSupportLibrary = true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationIdSuffix = versionName
+            versionNameSuffix = versionName
         }
         debug {
             minifyEnabled false
@@ -44,18 +50,18 @@ android {
     }
 
     //过滤掉不支持的平台
-    packagingOptions {
+    /*packagingOptions {
         exclude "lib/arm64-v8a/librealm-jni.so"
         exclude "lib/mips/librealm-jni.so"
         exclude "lib/x86/librealm-jni.so"
         exclude "lib/x86_64/librealm-jni.so"
-    }
+    }*/
 
     splits {
         abi {
             enable true
             reset()
-            include 'armeabi-v7a'
+            include 'x86', 'armeabi-v7a','x86_64'
         }
     }
     lintOptions { checkReleaseBuilds false }
@@ -63,7 +69,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     // retrofit
@@ -84,38 +90,38 @@ dependencies {
     // infinitecycleviewpager
     implementation project(path: ':infinitecycleviewpager')
     implementation project(path: ':thunder')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation 'com.android.support:cardview-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.2'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.2'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'jp.wasabeef:glide-transformations:2.0.2'
-    implementation 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
-    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.11.0@aar'
+    implementation 'com.squareup.okhttp3:okhttp:4.4.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
     implementation 'com.github.chrisbanes:PhotoView:2.0.0'
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
     implementation 'com.orhanobut:logger:1.15'
-    implementation 'com.google.code.gson:gson:2.8.0'
-    implementation 'com.jakewharton:butterknife:8.6.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.jakewharton:butterknife:10.2.1'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.18'
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.1.4'
     implementation 'com.aliyun.ams:alicloud-android-hotfix:3.1.0'
     implementation 'cn.jiguang.sdk:jpush:3.0.6'
     implementation 'cn.jiguang.sdk:jcore:1.1.3'
-    implementation 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
-    implementation 'com.ogaclejapan.smarttablayout:utils-v4:1.6.1@aar'
+    implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
+    implementation 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
     implementation 'com.shuyu:gsyVideoPlayer-java:6.0.3'
-    implementation 'org.jsoup:jsoup:1.10.3'
-    testImplementation 'junit:junit:4.12'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    implementation 'org.jsoup:jsoup:1.13.1'
+    testImplementation 'junit:junit:4.13'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
     implementation 'me.drakeet.materialdialog:library:1.3.1'
 }

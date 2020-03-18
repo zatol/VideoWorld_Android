@@ -5,8 +5,8 @@ import android.content.pm.ActivityInfo;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.StyleableRes;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.StyleableRes;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -44,11 +44,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         ActivityStack.getInstance().addActivity(this);
 
         //是否旋转屏幕
-        if (isAllowScreenRoate) {
+        /*if (isAllowScreenRoate) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         } else {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
+        }*/
         // 皮肤
         switch (Constant.THEME_TYPE){
             case Constant.THEME_TYPE_1:

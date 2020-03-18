@@ -2,7 +2,7 @@ package com.lxw.videoworld.framework.util;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.StyleableRes;
+import androidx.annotation.StyleableRes;
 import android.text.TextUtils;
 
 import com.lxw.videoworld.R;

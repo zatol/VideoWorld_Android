@@ -6,9 +6,9 @@ import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.core.view.ViewCompat;
+import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,10 +17,10 @@ import android.view.animation.Interpolator;
 
 import java.lang.reflect.Field;
 
-import static android.support.v4.view.ViewPager.GONE;
-import static android.support.v4.view.ViewPager.OnPageChangeListener;
-import static android.support.v4.view.ViewPager.PageTransformer;
-import static android.support.v4.view.ViewPager.VISIBLE;
+import static androidx.viewpager.widget.ViewPager.GONE;
+import static androidx.viewpager.widget.ViewPager.OnPageChangeListener;
+import static androidx.viewpager.widget.ViewPager.PageTransformer;
+import static androidx.viewpager.widget.ViewPager.VISIBLE;
 import static android.view.View.OVER_SCROLL_NEVER;
 import static com.gigamole.infinitecycleviewpager.InfiniteCyclePagerAdapter.OnNotifyDataSetChangedListener;
 

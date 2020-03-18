@@ -34,7 +34,7 @@
         app:stl_drawDecorationAfterTab="true"
         />
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager_source_category"
         android:background="?attr/com_wm_bg"
         android:layout_width="match_parent"

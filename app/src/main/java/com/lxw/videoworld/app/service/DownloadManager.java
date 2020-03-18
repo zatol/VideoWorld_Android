@@ -3,7 +3,7 @@ package com.lxw.videoworld.app.service;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.afollestad.materialdialogs.MaterialDialog;

@@ -3,7 +3,7 @@
     android:id="@+id/ll_play_video"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <android.support.v4.widget.DrawerLayout
+    <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerlayout_source_links"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -230,12 +230,12 @@
 
         </RelativeLayout>
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_source_links"
             android:layout_width="@dimen/dp_300"
             android:layout_height="match_parent"
             android:layout_gravity="end"
             android:background="@color/color_212121" />
-    </android.support.v4.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>
 
