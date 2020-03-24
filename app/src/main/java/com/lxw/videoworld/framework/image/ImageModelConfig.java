@@ -5,7 +5,6 @@ import android.content.Context;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.integration.okhttp3.OkHttpGlideModule;
-import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.bitmap_recycle.LruBitmapPool;
 import com.bumptech.glide.load.engine.cache.ExternalCacheDiskCacheFactory;
 import com.bumptech.glide.load.engine.cache.InternalCacheDiskCacheFactory;
@@ -37,11 +36,7 @@ public class ImageModelConfig extends OkHttpGlideModule {
         builder.setBitmapPool(new LruBitmapPool(memorySize));
 
         // 定义图片格式
-        builder.setDecodeFormat(DecodeFormat.PREFER_RGB_565);
+        //builder.setDecodeFormat(DecodeFormat.PREFER_RGB_565);
     }
 
-    @Override
-    public void registerComponents(Context context, Glide glide) {
-
-    }
 }

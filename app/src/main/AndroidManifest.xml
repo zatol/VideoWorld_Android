@@ -72,7 +72,7 @@
         </activity>
         <activity
             android:name=".app.ui.MainActivity"
-            android:screenOrientation="portrait" />
+        android:screenOrientation="portrait" />
 
         <!-- 微信分享 -->
         <activity

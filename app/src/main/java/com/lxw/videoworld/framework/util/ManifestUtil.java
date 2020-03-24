@@ -1,5 +1,6 @@
 package com.lxw.videoworld.framework.util;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
@@ -85,20 +86,25 @@ public class ManifestUtil {
 		return height;
 	}
 
-	public static String getDeviceUid(Application application) {
+	public static String getDeviceUid(Context context,Application application) {
 		String serial = Build.SERIAL;
 		String androidId =  Settings.System.getString(application.getContentResolver(), Settings.System.ANDROID_ID);
-		String deviceId =  ((TelephonyManager) application.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
 		StringBuilder stringBuilder = new StringBuilder();
-		if (!TextUtils.isEmpty(serial)) {
-			stringBuilder.append(serial);
-		}
-		if (!TextUtils.isEmpty(deviceId)) {
-			stringBuilder.append(deviceId);
-		}
-		if (TextUtils.isEmpty(serial) && TextUtils.isEmpty(deviceId) && !TextUtils.isEmpty(androidId)) {
-			stringBuilder.append(androidId);
+		if (context.getPackageManager().checkPermission(Manifest.permission.READ_PHONE_STATE,
+				context.getPackageName()) == PackageManager.PERMISSION_GRANTED) {
+			String deviceId = ((TelephonyManager) application.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
+
+			if (!TextUtils.isEmpty(serial)) {
+				stringBuilder.append(serial);
+			}
+			if (!TextUtils.isEmpty(deviceId)) {
+				stringBuilder.append(deviceId);
+			}
+			if (TextUtils.isEmpty(serial) && TextUtils.isEmpty(deviceId) && !TextUtils.isEmpty(androidId)) {
+				stringBuilder.append(androidId);
+			}
 		}
 		return stringBuilder.toString();
+
 	}
 }

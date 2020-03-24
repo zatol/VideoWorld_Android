@@ -26,6 +26,8 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.plugins.RxJavaPlugins;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -79,9 +81,9 @@ public class BaseApplication extends Application implements Thread.UncaughtExcep
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder().build();
         Realm.setDefaultConfiguration(config);
-
-        uid = ManifestUtil.getDeviceUid(this);
         appContext = getApplicationContext();
+        uid = ManifestUtil.getDeviceUid(appContext,this);
+
         // app启动次数
         appStartCount = SharePreferencesUtil.getIntSharePreferences(appContext, APP_START_COUNT, 0);
         appStartCount = appStartCount + 1;
@@ -112,6 +114,12 @@ public class BaseApplication extends Application implements Thread.UncaughtExcep
         // Jpush 初始化
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
+        RxJavaPlugins.setErrorHandler(new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                //异常处理
+            }
+        });
     }
 
     public static Context getAppContext() {

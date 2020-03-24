@@ -3,6 +3,7 @@ package com.lxw.videoworld.app.api;
 
 import com.lxw.videoworld.app.model.BaseResponse;
 import com.lxw.videoworld.app.model.ConfigModel;
+import com.lxw.videoworld.app.model.MaoYanMovieModel;
 import com.lxw.videoworld.app.model.SearchModel;
 import com.lxw.videoworld.app.model.SourceDetailModel;
 import com.lxw.videoworld.app.model.SourceListModel;
@@ -12,8 +13,10 @@ import java.util.List;
 import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Url;
 
 /**
  * Created by lxw9047 on 2016/10/20.
@@ -48,8 +51,8 @@ public interface HttpService {
     @POST("userInfo")
     Observable<BaseResponse<String>> addUserInfo(@Field("uid") String uid, @Field("sms") String sms, @Field("contact") String contact, @Field("address") String address, @Field("history") String history);
 
-//    @GET
-//    Observable<BaseResponse<MaoYanMovieModel>> getMaoYanMovies(@Url String url);
+    @GET
+    Observable<BaseResponse<MaoYanMovieModel>> getMaoYanMovies(@Url String url);
 
     @Headers("Cache-Control: public, max-age=43200")
     @FormUrlEncoded

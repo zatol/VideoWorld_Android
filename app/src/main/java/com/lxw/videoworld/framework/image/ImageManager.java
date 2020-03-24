@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
-
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 /**
  * Created by Zion on 2016/10/15.
  *
@@ -65,11 +65,11 @@ public class ImageManager {
         if (flag_loadImage) {
             Glide.with(context)
                     .load(imgUrl)
-                    .crossFade()
+                    .transition(withCrossFade())
                     .priority(Priority.NORMAL) //下载的优先级
                     //all:缓存源资源和转换后的资源 none:不作任何磁盘缓存
                     //source:缓存源资源   result：缓存转换后的资源
-                    .diskCacheStrategy(DiskCacheStrategy.RESULT) //缓存策略
+                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE) //缓存策略
                     .into(imageView);
         }
     }
@@ -86,20 +86,20 @@ public class ImageManager {
             if(flag_cache){
                 Glide.with(context)
                         .load(imgUrl)
-                        .crossFade()
+                        .transition(withCrossFade())
                         .priority(Priority.NORMAL) //下载的优先级
                         //all:缓存源资源和转换后的资源 none:不作任何磁盘缓存
                         //source:缓存源资源   result：缓存转换后的资源
-                        .diskCacheStrategy(DiskCacheStrategy.RESULT) //缓存策略
+                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE) //缓存策略
                         .into(imageView);
             }else{
                 Glide.with(context)
                         .load(imgUrl)
-                        .crossFade()
+                        .transition(withCrossFade())
                         .priority(Priority.NORMAL) //下载的优先级
                         //all:缓存源资源和转换后的资源 none:不作任何磁盘缓存
                         //source:缓存源资源   result：缓存转换后的资源
-                        .diskCacheStrategy(DiskCacheStrategy.RESULT) //缓存策略
+                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE) //缓存策略
                         .into(imageView);
             }
         }
@@ -118,11 +118,11 @@ public class ImageManager {
             Glide.with(context)
                     .load(imgUrl)
                     .error(errorImgId)
-                    .crossFade()
+                    .transition(withCrossFade())
                     .priority(Priority.NORMAL) //下载的优先级
                     //all:缓存源资源和转换后的资源 none:不作任何磁盘缓存
                     //source:缓存源资源   result：缓存转换后的资源
-                    .diskCacheStrategy(DiskCacheStrategy.RESULT) //缓存策略
+                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE) //缓存策略
                     .into(imageView);
         }
     }
@@ -140,17 +140,17 @@ public class ImageManager {
                 Glide.with(context)
                         .load(imgUrl)
                         .error(errorImgId)
-                        .crossFade()
+                        .transition(withCrossFade())
                         .priority(Priority.NORMAL) //下载的优先级
                         //all:缓存源资源和转换后的资源 none:不作任何磁盘缓存
                         //source:缓存源资源   result：缓存转换后的资源
-                        .diskCacheStrategy(DiskCacheStrategy.RESULT) //缓存策略
+                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE) //缓存策略
                         .into(imageView);
             }else{
                 Glide.with(context)
                         .load(imgUrl)
                         .error(errorImgId)
-                        .crossFade()
+                        .transition(withCrossFade())
                         .priority(Priority.NORMAL) //下载的优先级
                         //all:缓存源资源和转换后的资源 none:不作任何磁盘缓存
                         //source:缓存源资源   result：缓存转换后的资源
@@ -198,9 +198,8 @@ public class ImageManager {
             if (file == null) {
                 file = new File(path + fileName);
             }
-            Bitmap bitmap = Glide.with(context)
+            Bitmap bitmap = Glide.with(context).asBitmap()
                     .load(imgUrl)
-                    .asBitmap()
                     .into(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                     .get();
             if (bitmap != null) {
@@ -224,9 +223,8 @@ public class ImageManager {
     public Bitmap downloadImage(Context context, String imgUrl) {
         Bitmap bitmap = null;
         try {
-            bitmap = Glide.with(context)
+            bitmap = Glide.with(context).asBitmap()
                     .load(imgUrl)
-                    .asBitmap()
                     .into(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                     .get();
         } catch (Exception e) {
@@ -246,7 +244,7 @@ public class ImageManager {
         if (flag_loadImage) {
             Glide.with(context)
                     .load(imgUrl)
-                    .crossFade()
+                    .transition(withCrossFade())
                     .priority(Priority.NORMAL) //下载的优先级
                     .diskCacheStrategy(DiskCacheStrategy.ALL) //缓存策略
                     .thumbnail(Contants.THUMB_SIZE)
@@ -268,9 +266,9 @@ public class ImageManager {
         if (flag_loadImage) {
             Glide.with(context)
                     .load(imgUrl)
-                    .crossFade()
+                    .transition(withCrossFade())
                     .priority(Priority.NORMAL) //下载的优先级
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE) //缓存策略
+                    .diskCacheStrategy(DiskCacheStrategy.DATA) //缓存策略
                     .override(withSize, heightSize)
                     .into(imageView);
         }
@@ -287,10 +285,10 @@ public class ImageManager {
         if (flag_loadImage) {
             Glide.with(context)
                     .load(imgUrl)
-                    .crossFade()
+                    .transition(withCrossFade())
                     .priority(Priority.NORMAL) //下载的优先级
                     .diskCacheStrategy(DiskCacheStrategy.ALL) //缓存策略
-                    .bitmapTransform(new BlurTransformation(context, Contants.BLUR_VALUE))
+                    .transform(new BlurTransformation(context, Contants.BLUR_VALUE))
                     .into(imageView);
         }
     }
@@ -306,10 +304,10 @@ public class ImageManager {
         if (flag_loadImage) {
             Glide.with(context)
                     .load(imgUrl)
-                    .crossFade()
+                    .transition(withCrossFade())
                     .priority(Priority.NORMAL) //下载的优先级
                     .diskCacheStrategy(DiskCacheStrategy.ALL) //缓存策略
-                    .bitmapTransform(new CropCircleTransformation(context))
+                    .transform(new CropCircleTransformation(context))
                     .into(imageView);
         }
     }
@@ -325,10 +323,10 @@ public class ImageManager {
         if (flag_loadImage) {
             Glide.with(context)
                     .load(imgUrl)
-                    .crossFade()
+                    .transition(withCrossFade())
                     .priority(Priority.NORMAL) //下载的优先级
                     .diskCacheStrategy(DiskCacheStrategy.ALL) //缓存策略
-                    .bitmapTransform(
+                    .transform(
                             new BlurTransformation(context, Contants.BLUR_VALUE),
                             new CropCircleTransformation(context))
                     .into(imageView);
@@ -346,10 +344,10 @@ public class ImageManager {
         if (flag_loadImage) {
             Glide.with(context)
                     .load(imgUrl)
-                    .crossFade()
+                    .transition(withCrossFade())
                     .priority(Priority.NORMAL) //下载的优先级
                     .diskCacheStrategy(DiskCacheStrategy.ALL) //缓存策略
-                    .bitmapTransform(
+                    .transform(
                             new RoundedCornersTransformation(
                                     context, Contants.CORNER_RADIUS, Contants.CORNER_RADIUS))
                     .into(imageView);
@@ -367,10 +365,10 @@ public class ImageManager {
         if (flag_loadImage) {
             Glide.with(context)
                     .load(imgUrl)
-                    .crossFade()
+                    .transition(withCrossFade())
                     .priority(Priority.NORMAL) //下载的优先级
                     .diskCacheStrategy(DiskCacheStrategy.ALL) //缓存策略
-                    .bitmapTransform(
+                    .transform(
                             new BlurTransformation(context, Contants.BLUR_VALUE),
                             new RoundedCornersTransformation(
                                     context, Contants.CORNER_RADIUS, Contants.CORNER_RADIUS))
@@ -387,9 +385,8 @@ public class ImageManager {
      */
     public void loadBitmapSync(Context context, String imgUrl, SimpleTarget<Bitmap> target) {
         if (flag_loadImage) {
-            Glide.with(context)
+            Glide.with(context).asBitmap()
                     .load(imgUrl)
-                    .asBitmap()
                     .priority(Priority.NORMAL) //下载的优先级
                     .diskCacheStrategy(DiskCacheStrategy.ALL) //缓存策略
                     .into(target);
@@ -405,10 +402,9 @@ public class ImageManager {
      */
     public void loadGifImage(Context context, ImageView imageView, String imgUrl) {
         if (flag_loadImage) {
-            Glide.with(context)
+            Glide.with(context).asGif()
                     .load(imgUrl)
-                    .asGif()
-                    .crossFade()
+                    .transition(withCrossFade())
                     .priority(Priority.NORMAL) //下载的优先级
                     .diskCacheStrategy(DiskCacheStrategy.ALL) //缓存策略
                     .into(imageView);
@@ -424,10 +420,9 @@ public class ImageManager {
      */
     public void loadGifThumbnailImage(Context context, ImageView imageView, String imgUrl) {
         if (flag_loadImage) {
-            Glide.with(context)
+            Glide.with(context).asGif()
                     .load(imgUrl)
-                    .asGif()
-                    .crossFade()
+                    .transition(withCrossFade())
                     .priority(Priority.NORMAL) //下载的优先级
                     .diskCacheStrategy(DiskCacheStrategy.ALL) //缓存策略
                     .thumbnail(Contants.THUMB_SIZE)
