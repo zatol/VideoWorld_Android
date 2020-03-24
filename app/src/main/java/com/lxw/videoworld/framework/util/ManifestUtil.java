@@ -12,10 +12,11 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.WindowManager;
 
+import com.lxw.videoworld.app.ui.PermissionsActivity;
+
 public class ManifestUtil {
 	
 	public static String marketCode = null;
-
 	public static String getApkVersionName(Context context) {
 		try {
 			String version = context.getPackageManager().getPackageInfo(

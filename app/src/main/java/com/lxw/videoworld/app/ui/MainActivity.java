@@ -1,5 +1,6 @@
 package com.lxw.videoworld.app.ui;
 
+import android.Manifest;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -39,6 +40,7 @@ import com.lxw.videoworld.framework.http.HttpManager;
 import com.lxw.videoworld.framework.log.LoggerHelper;
 import com.lxw.videoworld.framework.util.DownloadUtil;
 import com.lxw.videoworld.framework.util.ManifestUtil;
+import com.lxw.videoworld.framework.util.PermissionsCheckerUtil;
 import com.lxw.videoworld.framework.util.SharePreferencesUtil;
 import com.lxw.videoworld.framework.util.ToastUtil;
 import com.lxw.videoworld.framework.widget.CustomDialog;
@@ -87,7 +89,13 @@ public class MainActivity extends BaseActivity {
     private List<Fragment> fragments = new ArrayList<>();
     private Fragment currentFragment;
     private String[] tabs;
+    private static final int REQUEST_CODE = 0; // 请求码
 
+    // 所需的全部权限
+    static final String[] PERMISSIONS = new String[]{
+            Manifest.permission.READ_PHONE_STATE
+    };
+    private PermissionsCheckerUtil permissionsCheckerUtil; // 权限检测器
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,8 +108,21 @@ public class MainActivity extends BaseActivity {
             getConfig(false);
         }
         setJpushAliasAndTags();
-
+        permissionsCheckerUtil = new PermissionsCheckerUtil(this);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 缺少权限时, 进入权限配置页面
+        if (permissionsCheckerUtil.lacksPermissions(PERMISSIONS)) {
+            startPermissionsActivity();
+        }
+    }
+    private void startPermissionsActivity() {
+        PermissionsActivity.startActivityForResult(this, REQUEST_CODE, PERMISSIONS);
+    }
+
 
     private void setJpushAliasAndTags() {
         JPushInterface.setAliasAndTags(MainActivity.this.getApplicationContext(), BaseApplication
@@ -452,6 +473,10 @@ public class MainActivity extends BaseActivity {
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
+        // 拒绝时, 关闭页面, 缺少主要权限, 无法运行
+        if (requestCode == REQUEST_CODE && resultCode == PermissionsActivity.PERMISSIONS_DENIED) {
+            finish();
+        }
     }
 
     @OnClick({R.id.img_close})

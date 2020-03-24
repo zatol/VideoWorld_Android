@@ -80,7 +80,7 @@ public class SettingsFragment extends Fragment {
             settings.add(new KeyValueModel("本地播放", ""));
             settings.add(new KeyValueModel("主题切换", ""));
             settings.add(new KeyValueModel("磁力搜索", ""));
-            settings.add(new KeyValueModel("和谐Q群", "126257036"));
+            settings.add(new KeyValueModel("和谐Q群", "575835686"));
             settings.add(new KeyValueModel("缓存清理", ValueUtil.formatFileSize(FileUtil.getFileSize(new File(PATH_OFFLINE_DOWNLOAD)))));
             settings.add(new KeyValueModel("版本更新", "V " + ManifestUtil.getApkVersionName(SettingsFragment.this.getContext())));
             settings.add(new KeyValueModel("移动网络暂停下载", ""));
@@ -214,7 +214,7 @@ public class SettingsFragment extends Fragment {
                         case "和谐Q群":
                             ClipboardManager clip = (ClipboardManager) SettingsFragment.this.getContext().getSystemService
                                     (Context.CLIPBOARD_SERVICE);
-                            clip.setText("126257036");
+                            clip.setText(((KeyValueModel) adapter.getData().get(position)).getValue());
                             ToastUtil.showMessage("已复制群号");
                             break;
                         case "我的账号":

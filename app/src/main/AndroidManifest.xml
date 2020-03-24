@@ -73,7 +73,9 @@
         <activity
             android:name=".app.ui.MainActivity"
         android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".app.ui.PermissionsActivity"
+            android:theme="@style/AppTheme.NoActionBar.Permissions"/>
         <!-- 微信分享 -->
         <activity
             android:name=".wxapi.WXEntryActivity"

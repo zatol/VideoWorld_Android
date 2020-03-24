@@ -89,8 +89,10 @@ public class FileUtil {
             if (file.isDirectory()) {
                 File[] children = file.listFiles();
                 long size = 0;
-                for (File f : children)
-                    size += getFileSize(f);
+                if(children!=null&&children.length>0){
+                    for (File f : children)
+                        size += getFileSize(f);
+                }
                 return size;
             } else {//如果是文件则直接返回其大小
                 return file.length();

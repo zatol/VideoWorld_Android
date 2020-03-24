@@ -94,14 +94,16 @@ public class SearchSpider {
                 public void onResponse(Call call, Response response) throws IOException {
                     if (response.isSuccessful()){
                         MaoYanMovieModel maoYanMovieModel = GsonUtil.json2Bean(response.body().string(), MaoYanMovieModel.class);
-                        List<MaoYanMovieModel.DataBean.ListBean> list = maoYanMovieModel.getData().getList();
-                        if (maoYanMovieModel.isSuccess() && maoYanMovieModel.getData() != null && list != null ){
-                            String[] hotwords = new String[list.size()];
-                            for(int i = 0; i < list.size(); i++){
-                                hotwords[i] = list.get(i).getMovieName();
-                            }
-                            if (hotwords.length >= 4){
-                                SharePreferencesUtil.setStringSharePreferences(BaseApplication.appContext, Constant.KEY_SEARCH_HOTWORDS, Arrays.toString(hotwords));
+                        if(maoYanMovieModel!=null&&maoYanMovieModel.getData()!=null){
+                            List<MaoYanMovieModel.DataBean.ListBean> list = maoYanMovieModel.getData().getList();
+                            if (maoYanMovieModel.isSuccess() && maoYanMovieModel.getData() != null && list != null ){
+                                String[] hotwords = new String[list.size()];
+                                for(int i = 0; i < list.size(); i++){
+                                    hotwords[i] = list.get(i).getMovieName();
+                                }
+                                if (hotwords.length >= 4){
+                                    SharePreferencesUtil.setStringSharePreferences(BaseApplication.appContext, Constant.KEY_SEARCH_HOTWORDS, Arrays.toString(hotwords));
+                                }
                             }
                         }
                     }
