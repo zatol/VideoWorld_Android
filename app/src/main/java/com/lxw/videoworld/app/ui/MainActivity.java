@@ -388,9 +388,9 @@ public class MainActivity extends BaseActivity {
     public void setConfig(ConfigModel configModel, boolean flag_dialog) {
 
         String alipayCommand = "";
-        if (configModel.getAlipayCommand() != null || configModel.getAlipayCommand().length() != 0) {
+        /*if (configModel.getAlipayCommand() != null || configModel.getAlipayCommand().length() != 0) {
             alipayCommand = configModel.getAlipayCommand();
-        }
+        }*/
         //获取剪贴板管理器：
         ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         // 创建普通字符型ClipData

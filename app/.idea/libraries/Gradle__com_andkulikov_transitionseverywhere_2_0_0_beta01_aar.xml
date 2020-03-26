@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.andkulikov:transitionseverywhere:2.0.0-beta01@aar">
+    <CLASSES>
+      <root url="jar://G:/gradle/caches/transforms-1/files-1.1/transitionseverywhere-2.0.0-beta01.aar/b405bb4722ff1f728be74e0d51c587fa/jars/classes.jar!/" />
+      <root url="file://G:/gradle/caches/transforms-1/files-1.1/transitionseverywhere-2.0.0-beta01.aar/b405bb4722ff1f728be74e0d51c587fa/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://G:/gradle/caches/modules-2/files-2.1/com.andkulikov/transitionseverywhere/2.0.0-beta01/3d8df039674a1e242e675f386b2dd65f7d9f1625/transitionseverywhere-2.0.0-beta01-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

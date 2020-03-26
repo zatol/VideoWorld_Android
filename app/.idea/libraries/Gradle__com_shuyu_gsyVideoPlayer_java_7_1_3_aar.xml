@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.shuyu:gsyVideoPlayer-java:7.1.3@aar">
+    <CLASSES>
+      <root url="jar://G:/gradle/caches/transforms-1/files-1.1/gsyVideoPlayer-java-7.1.3.aar/579ee4b16aa455b822df979d332b516c/jars/classes.jar!/" />
+      <root url="file://G:/gradle/caches/transforms-1/files-1.1/gsyVideoPlayer-java-7.1.3.aar/579ee4b16aa455b822df979d332b516c/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://G:/gradle/caches/modules-2/files-2.1/com.shuyu/gsyVideoPlayer-java/7.1.3/433bcc36ae825c376248d0cf1235376eef997fb2/gsyVideoPlayer-java-7.1.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

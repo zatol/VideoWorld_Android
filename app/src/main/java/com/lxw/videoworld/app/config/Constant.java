@@ -52,7 +52,7 @@ public class Constant {
 
     public static final String API_VERSION = "v1/";
     // TODO !!!测试地址!!!
-    public static final String BASE_URL = "http://localhost:8080/videoworld/" + Constant.API_VERSION;
+    public static final String BASE_URL = "http://192.168.40.5:8080/VideoWorld/" + Constant.API_VERSION;
 
     /** 是否debug模式 **/
     public static boolean isDebug = true;

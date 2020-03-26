@@ -360,8 +360,8 @@ public class SourceDetailFragment extends BaseFragment {
         sourceHistoryModel.setSourceDetailModel(sourceDetailModel);
         sourceHistoryModel.setStatus(Constant.STATUS_1);
         RealmUtil.copyOrUpdateHistoryModel(sourceHistoryModel, false);
-        if (sourceDetailModel != null && (sourceDetailModel.getSourceType().equals(Constant.SOURCE_TYPE_4) ||
-                sourceDetailModel.getSourceType().equals(Constant.SOURCE_TYPE_5) && StringUtil.isAutoPlay(links.get(position)))) {
+        if (sourceDetailModel != null && (Constant.SOURCE_TYPE_4.equals(sourceDetailModel.getSourceType()) ||
+                Constant.SOURCE_TYPE_5.equals(sourceDetailModel.getSourceType()) && StringUtil.isAutoPlay(links.get(position)))) {
             Intent intent = new Intent(SourceDetailFragment.this.getActivity(), PlayVideoActivity.class);
             intent.putExtra("url", links.get(position));
             intent.putStringArrayListExtra("urlList", links);

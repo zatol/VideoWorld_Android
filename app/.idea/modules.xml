@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../VideoWorld_Android.iml" filepath="$PROJECT_DIR$/../VideoWorld_Android.iml" group="VideoWorld_Android" />
+      <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" group="VideoWorld_Android/app" />
+      <module fileurl="file://$PROJECT_DIR$/../infinitecycleviewpager/infinitecycleviewpager.iml" filepath="$PROJECT_DIR$/../infinitecycleviewpager/infinitecycleviewpager.iml" group="VideoWorld_Android/infinitecycleviewpager" />
+      <module fileurl="file://$PROJECT_DIR$/../thunder/thunder.iml" filepath="$PROJECT_DIR$/../thunder/thunder.iml" group="VideoWorld_Android/thunder" />
+    </modules>
+  </component>
+</project>

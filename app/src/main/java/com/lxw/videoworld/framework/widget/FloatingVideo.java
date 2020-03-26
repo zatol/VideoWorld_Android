@@ -146,7 +146,7 @@ public class FloatingVideo extends StandardGSYVideoPlayer {
         return getContext();
     }
 
-    @Override
+   /* @Override
     protected void startDismissControlViewTimer() {
         cancelDismissControlViewTimer();
         mDismissControlViewTimer = new Timer();
@@ -165,7 +165,7 @@ public class FloatingVideo extends StandardGSYVideoPlayer {
             mDismissControlViewTimerTask = null;
         }
 
-    }
+    }*/
 
     private class DismissControlViewTimerTask extends TimerTask {
         @Override
